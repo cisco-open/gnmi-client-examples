@@ -5,75 +5,71 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-fbab2c.svg)](CODE_OF_CONDUCT.md)
 [![Maintainer](https://img.shields.io/badge/Maintainer-Cisco-00bceb.svg)](https://opensource.cisco.com)
 
-## Before You Start
-
-As much as possible, we have tried to provide enough tooling to get you up and running quickly and with a minimum of effort. This includes sane defaults for documentation; templates for bug reports, feature requests, and pull requests; and [GitHub Actions](https://github.com/features/actions) that will automatically manage stale issues and pull requests. This latter defaults to labeling issues and pull requests as stale after 60 days of inactivity, and closing them after 7 additional days of inactivity. These [defaults](.github/workflows/stale.yml) and more can be configured. For configuration options, please consult the documentation for the [stale action](https://github.com/actions/stale).
-
-In trying to keep this template as generic and reusable as possible, there are some things that were omitted out of necessity and others that need a little tweaking. Before you begin developing in earnest, there are a few changes that need to be made:
-
-- [ ] ✅ Select an [OSI-approved license](https://opensource.org/licenses) for your project. This can easily be achieved through the 'Add File' button on the GitHub UI, naming the file `LICENSE`, and selecting your desired license from the provided list.
-- [ ] Update the `<License name>` placeholder in this file to reflect the name of the license you selected above.
-- [ ] Replace `[INSERT CONTACT METHOD]` in [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) with a suitable communication channel.
-- [ ] Change references to `org_name` to the name of the org your repo belongs to (eg. `cisco-open`):
-  - [ ] In [`README.md`](README.md)
-  - [ ] In [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- [ ] Change references to `repo_name` to the name of your new repo:
-  - [ ] In [`README.md`](README.md)
-  - [ ] In [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- [ ] Update the link to the contribution guidelines to point to your project:
-  - [ ] In [`.github/ISSUE_TEMPLATE/BUG_REPORT.md`](.github/ISSUE_TEMPLATE/BUG_REPORT.md)
-  - [ ] In [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
-- [ ] Replace the `<project name>` placeholder with the name of your project:
-  - [ ] In [`CONTRIBUTING.md`](CONTRIBUTING.md)
-  - [ ] In [`SECURITY.md`](SECURITY.md)
-- [ ] Add names and contact information for actual project maintainers to [`MAINTAINERS.md`](MAINTAINERS.md).
-- [ ] Delete the content of [`CHANGELOG.md`](CHANGELOG.md). We encourage you to [keep a changelog](https://keepachangelog.com/en/1.0.0/).
-- [ ] Configure [`.github/dependabot.yaml`](dependabot.yaml) for your project's language and tooling dependencies.
-- [ ] Replace the generic content in this file with the relevant details about your project.
-- [ ] Acknowledge that some features like [branch protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule) are only available when the repo is `public`.
-- [ ] 🚨 Delete this section of the `README`!
-
 ## About The Project
 
-Provide some information about what the project is/does.
+This repo demonstrates how to use a subscribe request through gRPC Network Management Interface (gNMI) in order to retrieve interface counter statistics data with open-config models. A function is provided for this endeavour. This project will expand to other data in future releases. Support for C++ is currently provided. Potential for other language support in future releases.
 
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### Prerequisites and Information
 
-This is an example of how to list things you need to use the software and how to install them.
+These are all provided/handled for ease of use:
 
-- npm
+You can find the specification for gNMI here:  
+https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md
 
-  ```sh
-  npm install npm@latest -g
-  ```
+You can find information regarding open-config here:  
+https://github.com/openconfig/public/tree/master
+
+You can find the protos used here (Updated protos on April 22 2024):
+https://github.com/openconfig/gnmi/tree/master/proto
+Things to do: cleanup and fetch during build
+The commands used to get the protos were:
+git clone <> followed by:
+git checkout SHA:
+```
+git clone https://github.com/openconfig/gnmi.git
+git checkout 5588964b559c9afee319909dd022b6706fe4a162
+```
+You might need to add more protos in the future as this can change.
+The gnmi.proto file has one change made on it:
+import "github.com/openconfig/gnmi/proto/gnmi_ext/gnmi_ext.proto"; -> import "gnmi_ext.proto";
+
+We use docker containers, which handles the installation of the required packages and libraries. If the user wants to run this in their own environment, then please refer to the Dockerfile for the necessary installation packages.
 
 ### Installation
 
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/org_name/repo_name.git
+   git clone https://github.com/cisco-open/gnmi-client-examples.git
    ```
 
-2. Install NPM packages
+## Build Docker environment
 
+1. Run the docker build
    ```sh
-   npm install
+   cd gnmi_client
+   make gnmi-build
+   ```
+2. To go into docker enviornment
+   ```sh
+   make app-bash
+   ```
+3. To remake the build with any new changes, in the docker environment
+   ```sh
+    $ cd src
+    $ make
    ```
 
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com) or the [Wiki](https://github.com/org_name/repo_name/wiki)_
+## Usage: Gnmi Client Examples:
+Following the Steps mentioned in the C++ [README](https://github.com/cisco-open/gnmi-client-examples/gnmi_client/src/README.md)
 
 ## Roadmap
 
-See the [open issues](https://github.com/org_name/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/cisco-open/gnmi-client-examples/issues) for a list of proposed features (and known issues).
 
 ## Contributing
 
@@ -81,13 +77,11 @@ Contributions are what make the open source community such an amazing place to l
 
 ## License
 
-Distributed under the `<License name>` License. See [LICENSE](LICENSE) for more information.
+Distributed under the `Apache License, Version 2.0` License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/org_name/repo_name](https://github.com/org_name/repo_name)
+Project Link: [https://github.com/cisco-open/gnmi-client-examples](https://github.com/cisco-open/gnmi-client-examples)
 
 ## Acknowledgements
 
