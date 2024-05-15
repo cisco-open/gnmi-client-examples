@@ -10,26 +10,6 @@
 
 A function will be provided, that demonstrates how to use a subscribe request through gRPC Network Management Interface (gNMI) in order to retrieve interface counter statistics with open-config models. Said function is called get_interface_stats.
 
-You can find the specification for gNMI here:  
-https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md
-
-You can find information regarding open-config here:  
-https://github.com/openconfig/public/tree/master
-
-You can find the protos used here (Updated protos on April 22 2024):
-https://github.com/openconfig/gnmi/tree/master/proto
-Things to do: cleanup and fetch during build
-The commands used to get the protos were:
-git clone <> followed by:
-git checkout SHA:
-```
-git clone https://github.com/openconfig/gnmi.git
-git checkout 5588964b559c9afee319909dd022b6706fe4a162
-```
-You might need to add more protos in the future as this can change.
-The gnmi.proto file has one change made on it:
-import "github.com/openconfig/gnmi/proto/gnmi_ext/gnmi_ext.proto"; -> import "gnmi_ext.proto";
-
 NOTE: If you only want to be able to run the code then you only need to follow the Server Setup and How to Run the Function and Explanation sections.
 #### <a name='server'></a>Server Setup
 

@@ -17,13 +17,13 @@ To get a local copy up and running follow these simple steps.
 
 These are all provided/handled for ease of use:
 
-You can find the specification for gNMI here:  
+User can find the specification for gNMI here:  
 https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md
 
-You can find information regarding open-config here:  
+User can find information regarding open-config here:  
 https://github.com/openconfig/public/tree/master
 
-You can find the protos used here (Updated protos on April 22 2024):
+User can find the protos used here (Updated protos on April 22 2024):
 https://github.com/openconfig/gnmi/tree/master/proto
 Things to do: cleanup and fetch during build
 The commands used to get the protos were:
@@ -33,11 +33,12 @@ git checkout SHA:
 git clone https://github.com/openconfig/gnmi.git
 git checkout 5588964b559c9afee319909dd022b6706fe4a162
 ```
-You might need to add more protos in the future as this can change.
+
+User might need to add more protos in the future as dependecies for these proto files can change.
 The gnmi.proto file has one change made on it:
 import "github.com/openconfig/gnmi/proto/gnmi_ext/gnmi_ext.proto"; -> import "gnmi_ext.proto";
 
-We use docker containers, which handles the installation of the required packages and libraries. If the user wants to run this in their own environment, then please refer to the Dockerfile for the necessary installation packages.
+We use docker containers, which handles the installation of the required packages and libraries. If the user wants to run this in their own environment, then please refer to the [Dockerfile](https://github.com/cisco-open/gnmi-client-examples/gnmi_client/Dockerfile) for the necessary installation packages.
 
 ### Installation
 
@@ -73,7 +74,7 @@ See the [open issues](https://github.com/cisco-open/gnmi-client-examples/issues)
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. For detailed contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md)
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions Users make are **greatly appreciated**. For detailed contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
