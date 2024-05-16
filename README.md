@@ -1,7 +1,7 @@
 # GNMI client
 
 [![Release](https://img.shields.io/github/v/release/cisco-ospo/oss-template?display_name=tag)](CHANGELOG.md)
-[![Lint](https://github.com/cisco-ospo/oss-template/actions/workflows/lint.yml/badge.svg?branch=main)](.github/workflows/lint.yml)
+[![Lint](https://github.com/cisco-ospo/oss-template/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/cisco-open/gnmi-client-examples/actions/workflows/lint.yml)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-fbab2c.svg)](CODE_OF_CONDUCT.md)
 [![Maintainer](https://img.shields.io/badge/Maintainer-Cisco-00bceb.svg)](MAINTAINERS.md)
 
@@ -38,7 +38,7 @@ User might need to add more protos in the future as dependecies for these proto 
 The gnmi.proto file has one change made on it:
 import "github.com/openconfig/gnmi/proto/gnmi_ext/gnmi_ext.proto"; -> import "gnmi_ext.proto";
 
-We use docker containers, which handles the installation of the required packages and libraries. If the user wants to run this in their own environment, then please refer to the [Dockerfile](gnmi_client/src/Dockerfile) for the necessary installation packages.
+We use docker containers, which handles the installation of the required packages and libraries. If the user wants to run this in their own environment, then please refer to the [Dockerfile](gnmi_client/Dockerfile) for the necessary installation packages.
 
 ### Installation
 
