@@ -1,4 +1,4 @@
-# Open Source Project Template
+# GNMI client
 
 [![Release](https://img.shields.io/github/v/release/cisco-ospo/oss-template?display_name=tag)](CHANGELOG.md)
 [![Lint](https://github.com/cisco-ospo/oss-template/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/cisco-ospo/oss-template/actions/workflows/lint.yml)
