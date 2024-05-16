@@ -18,18 +18,19 @@ To get a local copy up and running follow these simple steps.
 These are all provided/handled for ease of use:
 
 User can find the specification for gNMI here:  
-https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md
+<https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md>
 
 User can find information regarding open-config here:  
-https://github.com/openconfig/public/tree/master
+<https://github.com/openconfig/public/tree/master>
 
 User can find the protos used here (Updated protos on April 22 2024):
-https://github.com/openconfig/gnmi/tree/master/proto
+<https://github.com/openconfig/gnmi/tree/master/proto>
 Things to do: cleanup and fetch during build
 The commands used to get the protos were:
 git clone <> followed by:
 git checkout SHA:
-```
+
+```sh
 git clone https://github.com/openconfig/gnmi.git
 git checkout 5588964b559c9afee319909dd022b6706fe4a162
 ```
@@ -51,21 +52,27 @@ We use docker containers, which handles the installation of the required package
 ## Build Docker environment
 
 1. Run the docker build
+
    ```sh
    cd gnmi_client
    make gnmi-build
    ```
+
 2. To go into docker enviornment
+
    ```sh
    make app-bash
    ```
+
 3. To remake the build with any new changes, in the docker environment
+
    ```sh
-    $ cd src
-    $ make
+    cd src
+    make
    ```
 
-## Usage: Gnmi Client Examples:
+## Usage: Gnmi Client Examples
+
 Following the Steps mentioned in the C++ [README](https://github.com/cisco-open/gnmi-client-examples/gnmi_client/src/README.md)
 
 ## Roadmap
