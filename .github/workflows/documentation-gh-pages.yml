@@ -1,0 +1,37 @@
+name: Documentation GitHub Pages Deploy Action
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git python3-pip doxygen graphviz
+          sudo pip3 install --upgrade sphinx breathe sphinx_rtd_theme myst-parser
+          git fetch --tags
+          cd docs
+          mkdir _build
+          python3 build_docs.py
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: "./pages"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

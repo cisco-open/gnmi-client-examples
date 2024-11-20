@@ -1,0 +1,5 @@
+# Math the Git Tag to the version number and the languages available
+"0.1.0":
+  tag: '0.1.0'
+  languages:
+    - "en"

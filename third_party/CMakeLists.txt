@@ -1,0 +1,9 @@
+add_subdirectory(nlohmann_json)
+add_subdirectory(fmt)
+add_subdirectory(grpc)
+
+if (ENABLE_UNIT_TESTS)
+    add_subdirectory(googletest)
+else ()
+    add_custom_target(googletest_dependency)
+endif ()

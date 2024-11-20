@@ -1,0 +1,20 @@
+---
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  misc-*,
+  cppcoreguidelines-*,
+  performance-*,
+  readability-*,
+  modernize-*,
+  portability-*,
+  clang-analyzer-*,
+  -cppcoreguidelines-special-member-functions,
+  -modernize-use-trailing-return-type,
+  -modernize-avoid-c-arrays,
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -bugprone-easily-swappable-parameters,
+  -cppcoreguidelines-owning-memory,
+WarningsAsErrors: "-*"
