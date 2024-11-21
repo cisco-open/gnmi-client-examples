@@ -36,7 +36,7 @@ class Derived : public GnmiClient
         return this->impl_.get();
     }
 
-    std::function<void(CounterInterface&)> success_handler = [&](CounterInterface& iface)
+    std::function<void(std::shared_ptr<CounterInterface>)> success_handler = [&](std::shared_ptr<CounterInterface> iface)
     {
         std::cout << "Here are the Pbr stats listed: SubscribeResponse "
                   << std::this_thread::get_id() << std::endl;
@@ -171,12 +171,12 @@ TEST(GRPCTest, StreamBasicTest)
     bool retry = false;
     bool stream_ended = false;
     instance.set_rpc_success_handler(
-        [&](CounterInterface& iface)
+        [&](std::shared_ptr<CounterInterface> iface)
         {
-            auto& derived_iface = dynamic_cast<PBRBasic&>(iface);
-            if (!derived_iface.stats.empty())
+            auto derived_iface = std::dynamic_pointer_cast<PBRBasic>(iface);
+            if (!derived_iface->stats.empty())
             {
-                const auto& response_stats = derived_iface.stats.back();
+                const auto& response_stats = derived_iface->stats.back();
                 std::cout << "Here are the Pbr stats listed: SubscribeResponse "
                           << std::this_thread::get_id() << std::endl;
                 std::cout << "       policy-name:  " << response_stats.policy_name << std::endl;
