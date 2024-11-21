@@ -51,7 +51,6 @@ User can find information regarding open-config here:\
 
 User can find the protos used here (Updated protos on April 22 2024):
 <https://github.com/openconfig/gnmi/tree/master/proto>
-Things to do: cleanup and fetch during build
 The commands used to get the protos were:
 git clone <> followed by:
 git checkout SHA:
